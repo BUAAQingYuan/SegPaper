@@ -4,7 +4,7 @@
 <mapper namespace="SqlMapper.TemplateMapper">
 
     <select id="getContent"  parameterType="String" resultType="Hashmap">
-    	select title_cn,abstract_cn from paper_wanfang limit ${offset},100
+    	select title_cn,abstract_cn from paper_wanfang limit ${offset},10000
     </select>
        
 </mapper>

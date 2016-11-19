@@ -13,9 +13,7 @@ public class Util {
 	
 	public static void main(String[] args)
 	{
-		String content = "";
-		
-		System.out.println(Util.filter(content));
+		System.out.printf("already processed %f%%, total is %d\n", (float)1*100/500,50);
 		
 	}
 	

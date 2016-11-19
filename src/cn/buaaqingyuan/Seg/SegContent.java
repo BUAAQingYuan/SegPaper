@@ -27,19 +27,27 @@ public class SegContent {
 	}
 	
 	
-	public static void  seg(String outputfile) throws IOException
+	public static void  seg(String outputfile,int total,int offset) throws IOException
 	{
 		SqlSession session=SqlUtil.getSession();
 		
-		List<String> contents = SqlUtil.getContents(session, 0);
+		int block = 10000;
 		
-		File  phrase_f = new File(outputfile);
-		
-		for(String content:contents)
+		for(int i=1;i<=total;i++)
 		{
-			String result = parse(content);
-			System.out.println(result);
-			FileUtils.write(phrase_f, result+"\n", true);
+			List<String> contents = SqlUtil.getContents(session, offset);
+			
+			File  phrase_f = new File(outputfile);
+			
+			for(String content:contents)
+			{
+				String result = parse(content);
+				//System.out.println(result);
+				FileUtils.write(phrase_f, result+"\n", true);
+			}
+			
+			offset = offset + block ;
+			System.out.format("already processed %f%%, total is %d\n", (float)i*100/total,i*block);
 		}
 		
 	}
@@ -47,7 +55,7 @@ public class SegContent {
 	
 	public static void main(String[] args) throws IOException
 	{
-		SegContent.seg("paper.txt");
+		SegContent.seg("paper.txt",500,0);
 	}
 	
 }
