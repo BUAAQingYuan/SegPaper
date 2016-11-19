@@ -14,3 +14,10 @@
 ## 分词
 
 使用构造的词典，放在路径library/default目录下，进行分词。
+
+
+## link
+
+[SparkTagPaper](https://github.com/BUAAQingYuan/SparkTagPaper)
+
+[TagPaper](https://github.com/BUAAQingYuan/TagPaper)
