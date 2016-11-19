@@ -13,7 +13,7 @@
 
 ## 分词
 
-使用构造的词典，放在路径library/default目录下，进行分词。
+使用构造的词典，放在路径library/default目录下，使用SegPaper中SegContent进行分词。
 
 
 ## link
