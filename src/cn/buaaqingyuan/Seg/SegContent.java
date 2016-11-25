@@ -2,6 +2,7 @@ package cn.buaaqingyuan.Seg;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.ansj.domain.Term;
@@ -33,11 +34,12 @@ public class SegContent {
 		
 		int block = 10000;
 		
+		List<String> contents = new ArrayList<String>();
+		File  phrase_f = new File(outputfile);
+		
 		for(int i=1;i<=total;i++)
 		{
-			List<String> contents = SqlUtil.getContents(session, offset);
-			
-			File  phrase_f = new File(outputfile);
+			contents = SqlUtil.getContents(session, offset);
 			
 			for(String content:contents)
 			{
@@ -47,15 +49,17 @@ public class SegContent {
 			}
 			
 			offset = offset + block ;
-			System.out.format("already processed %f%%, total is %d\n", (float)i*100/total,i*block);
+			System.out.format("already processed %f%%, total is %d,current offset is %d\n", (float)i*100/total,i*block,offset);
 		}
+		
+		session.close();
 		
 	}
 	
 	
 	public static void main(String[] args) throws IOException
 	{
-		SegContent.seg("paper.txt",500,0);
+		SegContent.seg("paper6.txt",42,9580000);
 	}
 	
 }
